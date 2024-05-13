@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Dualklip\Csc\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class CscCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'csc';
 
     public $description = 'My command';
 
