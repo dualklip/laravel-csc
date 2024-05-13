@@ -2,9 +2,9 @@
 
 namespace Dualklip\Csc;
 
+use Dualklip\Csc\Commands\CscCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Dualklip\Csc\Commands\CscCommand;
 
 class CscServiceProvider extends PackageServiceProvider
 {
@@ -18,8 +18,8 @@ class CscServiceProvider extends PackageServiceProvider
         $package
             ->name('csc')
             ->hasConfigFile()
-            ->hasMigrations(['create_cities_table','create_countries_table','create_regions_table','create_states_table','create_subregions_table'])
+            ->hasMigrations(['create_cities_table', 'create_countries_table', 'create_regions_table', 'create_states_table', 'create_subregions_table'])
             ->runsMigrations();
-            //->hasCommand(CscCommand::class);
+        //->hasCommand(CscCommand::class);
     }
 }
