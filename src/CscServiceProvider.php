@@ -16,7 +16,7 @@ class CscServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('csc')
+            ->name('laravel-csc')
             ->hasConfigFile()
             ->hasMigrations(['create_cities_table','create_countries_table','create_regions_table','create_states_table','create_subregions_table'])
             ->runsMigrations();
