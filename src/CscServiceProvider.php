@@ -18,7 +18,8 @@ class CscServiceProvider extends PackageServiceProvider
         $package
             ->name('csc')
             ->hasConfigFile()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(CscCommand::class);
+            ->hasMigrations(['create_cities_table','create_countries_table','create_regions_table','create_states_table','create_subregions_table'])
+            ->runsMigrations();
+            //->hasCommand(CscCommand::class);
     }
 }
