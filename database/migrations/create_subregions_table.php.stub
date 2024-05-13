@@ -6,15 +6,24 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('subregions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('translations');
+            $table->foreignId('region_id')->constrained();
             $table->tinyInteger('flag');
             $table->string('wikiDataId');
             $table->timestamps();
         });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('subregions');
     }
 };

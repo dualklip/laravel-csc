@@ -1,21 +1,40 @@
 <?php
 
+use Dualklip\Csc\Models\Region;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Symfony\Component\Console\Output\ConsoleOutput;
+use Symfony\Component\Yaml\Yaml;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Schema::create('regions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('translations');
-            $table->foreignId('region_id')->constrained();
             $table->tinyInteger('flag');
             $table->string('wikiDataId');
             $table->timestamps();
         });
+        $output = new ConsoleOutput();
+        $output->writeln('Starting seeding...');
+
+        $filePath = base_path('vendor/dualklip/laravel-csc/database/yaml/regions.yml');
+
+        $regions = Yaml::parseFile($filePath);
+            foreach ($regions as $region) {
+                Region::create($region);
+            }
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('regions');
     }
 };
