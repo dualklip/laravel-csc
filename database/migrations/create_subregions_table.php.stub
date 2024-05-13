@@ -8,11 +8,12 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('migration_table_name_table', function (Blueprint $table) {
+        Schema::create('subregions', function (Blueprint $table) {
             $table->id();
-
-            // add fields
-
+            $table->string('name');
+            $table->text('translations');
+            $table->tinyInteger('flag');
+            $table->string('wikiDataId');
             $table->timestamps();
         });
     }
