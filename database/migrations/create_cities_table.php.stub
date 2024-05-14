@@ -1,8 +1,10 @@
 <?php
 
+use Dualklip\Csc\Models\City;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Symfony\Component\Yaml\Yaml;
 
 return new class extends Migration
 {
@@ -18,9 +20,26 @@ return new class extends Migration
             $table->decimal('latitude', 10, 2);
             $table->decimal('longitude', 10, 2);
             $table->tinyInteger('flag');
-            $table->string('wikiDataId');
+            $table->string('wiki_data_id')->nullable();
             $table->timestamps();
         });
+        $filePath = base_path('vendor/dualklip/laravel-csc/database/yml/cities.yml');
+
+        $regions = Yaml::parseFile($filePath);
+        foreach ($regions['city'] as $region) {
+            City::create([
+                "id" => $region['id'],
+                "name" => $region['name'],
+                "state_id" => $region['state_id'],
+                "state_code" => $region['state_code'],
+                "country_id" => $region['country_id'],
+                "country_code" => $region['country_code'],
+                "latitude" => $region['latitude'],
+                "longitude" => $region['longitude'],
+                "flag" => 1,
+                "wiki_data_id" => $region['wikiDataId'],
+            ]);
+        }
     }
 
     /**
