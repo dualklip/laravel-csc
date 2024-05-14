@@ -21,9 +21,13 @@ class CscServiceProvider extends PackageServiceProvider
                     ->publishConfigFile()
                     ->publishMigrations()
                     ->askToRunMigrations()
-                    ->endWith(CscEndWithInstallerCommand::class);
+                    ->endWith(CscEndWithInstallerCommand::class)
+                    ->endWith(function (CscEndWithInstallerCommand $command) {
+                        $command->info('Have a great day!');
+                    });
             });
     }
+
     public function packageBooted()
     {
 
