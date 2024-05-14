@@ -26,21 +26,22 @@ class CscServiceProvider extends PackageServiceProvider
                     ->endWith(function (InstallCommand $command) {
                         $command->info('Installing laravel CSC...');
 
+
                         // publish migrations
-                        Artisan::call('vendor:publish --tag=laravel-csc --force');
+                        $command->call('vendor:publish --tag=laravel-csc --force');
                         // migrate new tables
-                        Artisan::call('migrate');
+                        $command->call('migrate');
                         // re-seed the world data
                         $command->info('seeding regions...');
-                        Artisan::call('db:seed --class=RegionSeeder ', array(), $command->getOutput());
+                        $command->call('db:seed --class=RegionSeeder');
                         $command->info('seeding subregions...');
-                        Artisan::call('db:seed --class=SubregionSeeder ', array(), $command->getOutput());
+                        $command->call('db:seed --class=SubregionSeeder');
                         $command->info('seeding countries...');
-                        Artisan::call('db:seed --class=CountrySeeder ', array(), $command->getOutput());
+                        $command->call('db:seed --class=CountrySeeder');
                         $command->info('seeding states...');
-                        Artisan::call('db:seed --class=StateSeeder ', array(), $command->getOutput());
+                        $command->call('db:seed --class=StateSeeder');
                         $command->info('seeding cities...');
-                        Artisan::call('db:seed --class=CitySeeder ', array(), $command->getOutput());
+                        $command->call('db:seed --class=CitySeeder');
                     });
             });
     }
