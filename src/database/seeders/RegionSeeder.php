@@ -10,7 +10,7 @@ class RegionSeeder extends Seeder
 {
     public function run(): void
     {
-        $filePath = __DIR__ . '/../yml/regions.yml';
+        $filePath = base_path('vendor/dualklip/laravel-csc/src/database/yml/regions.yml');
 
         $regions = Yaml::parseFile($filePath);
         foreach ($regions['region'] as $region) {

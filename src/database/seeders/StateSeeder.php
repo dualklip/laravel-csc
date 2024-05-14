@@ -10,7 +10,7 @@ class StateSeeder extends Seeder
 {
     public function run(): void
     {
-        $filePath = __DIR__ . '/../yml/states.yml';
+        $filePath = base_path('vendor/dualklip/laravel-csc/src/database/yml/states.yml');
 
         $regions = Yaml::parseFile($filePath);
         foreach ($regions['state'] as $region) {

@@ -10,7 +10,7 @@ class CitySeeder extends Seeder
 {
     public function run(): void
     {
-        $filePath = __DIR__ . '/../yml/cities.yml';
+        $filePath = base_path('vendor/dualklip/laravel-csc/src/database/yml/cities.yml');
 
         $regions = Yaml::parseFile($filePath);
         foreach ($regions['city'] as $region) {

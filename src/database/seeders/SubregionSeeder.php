@@ -10,7 +10,7 @@ class SubregionSeeder extends Seeder
 {
     public function run(): void
     {
-        $filePath = __DIR__ . '/../yml/subregions.yml';
+        $filePath = base_path('vendor/dualklip/laravel-csc/src/database/yml/subregions.yml');
 
         $regions = Yaml::parseFile($filePath);
         foreach ($regions['subregion'] as $region) {
