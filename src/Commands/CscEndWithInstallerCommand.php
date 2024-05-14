@@ -2,15 +2,11 @@
 
 namespace Dualklip\Csc\Commands;
 
-use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 
-class CscEndWithInstallerCommand extends Command
+class CscEndWithInstallerCommand extends InstallCommand
 {
-    public $signature = 'csc';
-
-    public $description = 'My command';
-
     public function handle(): int
     {
         $this->info('Installing laravel CSC...');
