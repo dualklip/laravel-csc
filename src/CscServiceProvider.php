@@ -13,7 +13,7 @@ class CscServiceProvider extends PackageServiceProvider
         $package
             ->name('csc')
             ->hasConfigFile()
-            ->hasMigrations(['create_cities_table', 'create_countries_table', 'create_regions_table', 'create_states_table', 'create_subregions_table'])
+            ->hasMigrations(['create_regions_table', 'create_subregions_table', 'create_countries_table', 'create_states_table', 'create_cities_table'])
             ->runsMigrations()
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
