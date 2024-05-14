@@ -1,4 +1,4 @@
-# :package_description
+# Laravel CSC
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/:vendor_slug/:package_slug/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/:vendor_slug/:package_slug/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -29,7 +29,7 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require dualklip/laravel-csc
 ```
 
 You can publish and run the migrations with:
@@ -42,7 +42,7 @@ php artisan migrate
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-config"
+php artisan vendor:publish --tag="laravel-csc-config"
 ```
 
 This is the contents of the published config file:
@@ -61,8 +61,8 @@ php artisan vendor:publish --tag=":package_slug-views"
 ## Usage
 
 ```php
-$variable = new VendorName\Skeleton();
-echo $variable->echoPhrase('Hello, VendorName!');
+$variable = new Dualklip\Csc();
+echo $variable->echoPhrase('Hello, Dualklip!');
 ```
 
 ## Testing
