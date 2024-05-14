@@ -38,10 +38,10 @@ class CscServiceProvider extends PackageServiceProvider
 
     public function registeringPackage(): void
     {
-        $this->app->bind(CitySeeder::class);
-        $this->app->bind(CountrySeeder::class);
-        $this->app->bind(RegionSeeder::class);
-        $this->app->bind(StateSeeder::class);
-        $this->app->bind(RegionSeeder::class);
+        $this->app->scoped(CitySeeder::class);
+        $this->app->scoped(CountrySeeder::class);
+        $this->app->scoped(RegionSeeder::class);
+        $this->app->scoped(StateSeeder::class);
+        $this->app->scoped(RegionSeeder::class);
     }
 }
