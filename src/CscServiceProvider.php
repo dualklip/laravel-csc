@@ -22,7 +22,6 @@ class CscServiceProvider extends PackageServiceProvider
                     ->publishConfigFile()
                     ->publishMigrations()
                     ->askToRunMigrations()
-                    ->endWith(CscEndWithInstallerCommand::class)
                     ->endWith(function (InstallCommand $command) {
                         $command->info('Installing laravel CSC...');
 
