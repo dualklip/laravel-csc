@@ -3,9 +3,10 @@
 namespace Database\Seeders;
 
 use Dualklip\Csc\Models\City;
+use Illuminate\Database\Seeder;
 use Symfony\Component\Yaml\Yaml;
 
-class CitySeeder
+class CitySeeder extends Seeder
 {
     public function run(): void
     {

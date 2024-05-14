@@ -3,9 +3,10 @@
 namespace Database\Seeders;
 
 use Dualklip\Csc\Models\State;
+use Illuminate\Database\Seeder;
 use Symfony\Component\Yaml\Yaml;
 
-class StateSeeder
+class StateSeeder extends Seeder
 {
     public function run(): void
     {

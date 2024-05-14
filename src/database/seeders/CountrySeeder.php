@@ -3,9 +3,10 @@
 namespace Database\Seeders;
 
 use Dualklip\Csc\Models\Country;
+use Illuminate\Database\Seeder;
 use Symfony\Component\Yaml\Yaml;
 
-class CountrySeeder
+class CountrySeeder extends Seeder
 {
     public function run(): void
     {

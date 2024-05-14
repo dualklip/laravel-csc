@@ -3,9 +3,10 @@
 namespace Database\Seeders;
 
 use Dualklip\Csc\Models\Region;
+use Illuminate\Database\Seeder;
 use Symfony\Component\Yaml\Yaml;
 
-class RegionSeeder
+class RegionSeeder extends Seeder
 {
     public function run(): void
     {
