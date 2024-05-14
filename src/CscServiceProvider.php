@@ -22,7 +22,21 @@ class CscServiceProvider extends PackageServiceProvider
                 $command
                     ->publishConfigFile()
                     ->publishMigrations()
-                    ->askToRunMigrations();
+                    ->publish('seeds')
+                    ->askToRunMigrations()
+                    ->endWith(function(InstallCommand $command) {
+                        $command->info('seeding regions...');
+                        $command->call('db:seed --class=RegionSeeder');
+                        $command->info('seeding subregions...');
+                        $command->call('db:seed --class=SubregionSeeder');
+                        $command->info('seeding countries...');
+                        $command->call('db:seed --class=CountrySeeder');
+                        $command->info('seeding states...');
+                        $command->call('db:seed --class=StateSeeder');
+                        $command->info('seeding cities...');
+                        $command->call('db:seed --class=CitySeeder');
+                        $command->info('Have a great day!');
+                    });
             });
         $this->publishes([
             __DIR__ . '/database/seeders/CitySeeder.php' => database_path('seeders/CitySeeder.php'),
@@ -30,7 +44,7 @@ class CscServiceProvider extends PackageServiceProvider
             __DIR__ . '/database/seeders/RegionSeeder.php' => database_path('seeders/RegionSeeder.php'),
             __DIR__ . '/database/seeders/StateSeeder.php' => database_path('seeders/StateSeeder.php'),
             __DIR__ . '/database/seeders/SubregionSeeder.php' => database_path('seeders/SubregionSeeder.php'),
-        ], 'csc-seeders');
+        ], 'csc-seeds');
     }
 
     public function registeringPackage(): void
