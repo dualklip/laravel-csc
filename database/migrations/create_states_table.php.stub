@@ -24,22 +24,6 @@ return new class extends Migration
             $table->string('wikiDataId');
             $table->timestamps();
         });
-        $filePath = base_path('vendor/dualklip/laravel-csc/database/yml/states.yml');
-
-        $regions = Yaml::parseFile($filePath);
-        foreach ($regions['state'] as $region) {
-            State::create([
-                "id" => $region['id'],
-                "name" => $region['name'],
-                "country_id" => $region['country_id'],
-                "country_code" => $region['country_code'],
-                "type" => $region['type'],
-                "latitude" => $region['latitude'],
-                "longitude" => $region['longitude'],
-                "flag" => 1,
-                "wikiDataId" => '',
-            ]);
-        }
     }
 
     /**

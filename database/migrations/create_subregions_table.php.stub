@@ -19,20 +19,6 @@ return new class extends Migration
             $table->string('wikiDataId');
             $table->timestamps();
         });
-
-        $filePath = base_path('vendor/dualklip/laravel-csc/database/yml/subregions.yml');
-
-        $regions = Yaml::parseFile($filePath);
-        foreach ($regions['subregion'] as $region) {
-            Subregion::create([
-                "id" => $region['id'],
-                "name" => $region['name'],
-                "translations" => json_encode($region['translations']),
-                "region_id" => $region['region_id'],
-                "flag" => 1,
-                "wikiDataId" => $region['wikiDataId'],
-            ]);
-        }
     }
 
     /**
