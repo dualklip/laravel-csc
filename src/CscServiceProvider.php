@@ -26,15 +26,15 @@ class CscServiceProvider extends PackageServiceProvider
                     ->askToRunMigrations()
                     ->endWith(function(InstallCommand $command) {
                         $command->info('seeding regions...');
-                        $command->call('db:seed --class=RegionSeeder');
+                        $command->call('artisan db:seed --class=RegionSeeder');
                         $command->info('seeding subregions...');
-                        $command->call('db:seed --class=SubregionSeeder');
+                        $command->call('artisan db:seed --class=SubregionSeeder');
                         $command->info('seeding countries...');
-                        $command->call('db:seed --class=CountrySeeder');
+                        $command->call('artisan db:seed --class=CountrySeeder');
                         $command->info('seeding states...');
-                        $command->call('db:seed --class=StateSeeder');
+                        $command->call('artisan db:seed --class=StateSeeder');
                         $command->info('seeding cities...');
-                        $command->call('db:seed --class=CitySeeder');
+                        $command->call('artisan db:seed --class=CitySeeder');
                         $command->info('Have a great day!');
                     });
             });
