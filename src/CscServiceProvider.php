@@ -3,6 +3,7 @@
 namespace Dualklip\Csc;
 
 use Dualklip\Csc\Commands\CscEndWithInstallerCommand;
+use Illuminate\Support\Facades\Artisan;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -22,8 +23,24 @@ class CscServiceProvider extends PackageServiceProvider
                     ->publishMigrations()
                     ->askToRunMigrations()
                     ->endWith(CscEndWithInstallerCommand::class)
-                    ->endWith(function (CscEndWithInstallerCommand $command) {
-                        $command->info('Have a great day!');
+                    ->endWith(function (InstallCommand $command) {
+                        $command->info('Installing laravel CSC...');
+
+                        // publish migrations
+                        Artisan::call('vendor:publish --tag=laravel-csc --force');
+                        // migrate new tables
+                        Artisan::call('migrate');
+                        // re-seed the world data
+                        $command->info('seeding regions...');
+                        Artisan::call('db:seed --class=RegionSeeder ', array(), $command->getOutput());
+                        $command->info('seeding subregions...');
+                        Artisan::call('db:seed --class=SubregionSeeder ', array(), $command->getOutput());
+                        $command->info('seeding countries...');
+                        Artisan::call('db:seed --class=CountrySeeder ', array(), $command->getOutput());
+                        $command->info('seeding states...');
+                        Artisan::call('db:seed --class=StateSeeder ', array(), $command->getOutput());
+                        $command->info('seeding cities...');
+                        Artisan::call('db:seed --class=CitySeeder ', array(), $command->getOutput());
                     });
             });
     }
