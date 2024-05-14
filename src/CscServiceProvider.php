@@ -3,10 +3,7 @@
 namespace Dualklip\Csc;
 
 use Dualklip\Csc\Commands\CscEndWithInstallerCommand;
-use Dualklip\Csc\database\seeders\CitySeeder;
-use Dualklip\Csc\database\seeders\CountrySeeder;
 use Dualklip\Csc\database\seeders\RegionSeeder;
-use Dualklip\Csc\database\seeders\StateSeeder;
 use Illuminate\Support\Facades\Artisan;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
@@ -27,21 +24,21 @@ class CscServiceProvider extends PackageServiceProvider
                     ->publishMigrations()
                     ->askToRunMigrations();
             });
-        /*$this->publishes([
+        $this->publishes([
             __DIR__ . '/database/seeders/CitySeeder.php' => database_path('seeders/CitySeeder.php'),
             __DIR__ . '/database/seeders/CountrySeeder.php' => database_path('seeders/CountrySeeder.php'),
             __DIR__ . '/database/seeders/RegionSeeder.php' => database_path('seeders/RegionSeeder.php'),
             __DIR__ . '/database/seeders/StateSeeder.php' => database_path('seeders/StateSeeder.php'),
             __DIR__ . '/database/seeders/SubregionSeeder.php' => database_path('seeders/SubregionSeeder.php'),
-        ], 'csc');*/
+        ], 'csc-seeders');
     }
 
     public function registeringPackage(): void
     {
-        $this->app->scoped(CitySeeder::class);
-        $this->app->scoped(CountrySeeder::class);
-        $this->app->scoped(RegionSeeder::class);
-        $this->app->scoped(StateSeeder::class);
-        $this->app->scoped(RegionSeeder::class);
+        /*$this->app->bind(RegionSeeder::class);
+        $this->app->bind(RegionSeeder::class);
+        $this->app->bind(RegionSeeder::class);
+        $this->app->bind(RegionSeeder::class);
+        $this->app->bind(RegionSeeder::class);*/
     }
 }
