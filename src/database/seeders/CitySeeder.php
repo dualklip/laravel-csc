@@ -15,7 +15,7 @@ class CitySeeder extends Seeder
         $regions = Yaml::parseFile($filePath);
         foreach ($regions['city'] as $region) {
             City::firstOrCreate([
-                "id" => $region['id'],
+                "id" => $region['id']],[
                 "name" => $region['name'],
                 "state_id" => $region['state_id'],
                 "state_code" => $region['state_code'],

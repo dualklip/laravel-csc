@@ -15,7 +15,7 @@ class CountrySeeder extends Seeder
         $regions = Yaml::parseFile($filePath);
         foreach ($regions['country'] as $region) {
             Country::firstOrCreate([
-                "id" => $region['id'],
+                "id" => $region['id']],[
                 "name" => $region['name'],
                 "iso3" => $region['iso3'],
                 "numeric_code" => $region['numeric_code'],

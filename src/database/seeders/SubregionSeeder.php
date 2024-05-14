@@ -15,7 +15,7 @@ class SubregionSeeder extends Seeder
         $regions = Yaml::parseFile($filePath);
         foreach ($regions['subregion'] as $region) {
             Subregion::firstOrCreate([
-                "id" => $region['id'],
+                "id" => $region['id']],[
                 "name" => $region['name'],
                 "translations" => json_encode($region['translations']),
                 "region_id" => $region['region_id'],
