@@ -1,6 +1,6 @@
 <?php
 
-namespace Dualklip\Csc\database\seeders;
+namespace Database\Seeders;
 
 use Dualklip\Csc\Models\Country;
 use Symfony\Component\Yaml\Yaml;
