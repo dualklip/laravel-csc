@@ -5,6 +5,7 @@ namespace Dualklip\Csc\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Subregion
@@ -33,5 +34,10 @@ class Subregion extends Model
     public function region(): BelongsTo
     {
         return $this->belongsTo(Region::class);
+    }
+
+    public function countries(): HasMany
+    {
+        return $this->hasMany(Country::class);
     }
 }
