@@ -13,7 +13,7 @@ class CscServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('csc')
+            ->name('laravel-csc')
             ->hasConfigFile('csc')
             ->hasMigrations(['create_regions_table', 'create_subregions_table', 'create_countries_table', 'create_states_table', 'create_cities_table'])
             ->runsMigrations()
