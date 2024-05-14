@@ -13,7 +13,7 @@ class CscServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('laravel-csc')
+            ->name('csc')
             ->hasConfigFile('csc')
             ->hasMigrations(['create_regions_table', 'create_subregions_table', 'create_countries_table', 'create_states_table', 'create_cities_table'])
             ->runsMigrations()
@@ -25,7 +25,7 @@ class CscServiceProvider extends PackageServiceProvider
             });
     }
 
-    public function boot(): void
+    public function packageBooted(): void
     {
         $this->publishes([
             __DIR__ . '/database/seeders/CitySeeder.php' => database_path('seeders/CitySeeder.php'),
