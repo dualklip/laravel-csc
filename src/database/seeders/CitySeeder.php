@@ -13,6 +13,7 @@ class CitySeeder extends Seeder
         $filePath = base_path('vendor/dualklip/laravel-csc/src/database/yml/cities.yml');
 
         $regions = Yaml::parseFile($filePath);
+        $this->command->getOutput()->progressStart(count($regions['city']));
         foreach ($regions['city'] as $region) {
             City::firstOrCreate([
                 "id" => $region['id']],[
@@ -26,6 +27,8 @@ class CitySeeder extends Seeder
                 "flag" => 1,
                 "wiki_data_id" => $region['wikiDataId'],
             ]);
+            $this->command->getOutput()->progressAdvance();
         }
+        $this->command->getOutput()->progressFinish();
     }
 }

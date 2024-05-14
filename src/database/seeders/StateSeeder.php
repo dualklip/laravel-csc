@@ -13,6 +13,7 @@ class StateSeeder extends Seeder
         $filePath = base_path('vendor/dualklip/laravel-csc/src/database/yml/states.yml');
 
         $regions = Yaml::parseFile($filePath);
+        $this->command->getOutput()->progressStart(count($regions['state']));
         foreach ($regions['state'] as $region) {
             State::firstOrCreate([
                 "id" => $region['id']],[
@@ -25,6 +26,8 @@ class StateSeeder extends Seeder
                 "flag" => 1,
                 "wikiDataId" => '',
             ]);
+            $this->command->getOutput()->progressAdvance();
         }
+        $this->command->getOutput()->progressFinish();
     }
 }
