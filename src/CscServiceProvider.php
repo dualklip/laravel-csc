@@ -24,6 +24,8 @@ class CscServiceProvider extends PackageServiceProvider
                     ->publishMigrations()
                     ->publish('seeds')
                     ->endWith(function(InstallCommand $command) {
+                        $command->info('running migrations...');
+                        $command->call('migrate');
                         $command->info('seeding regions...');
                         $command->call('db:seed', ['--class'=> 'RegionSeeder']);
                         $command->info('seeding subregions...');
